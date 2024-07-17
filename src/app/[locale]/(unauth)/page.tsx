@@ -1,6 +1,5 @@
+import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-
-import { Sponsors } from '@/components/Sponsors';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
@@ -16,77 +15,100 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 
 export default function Index() {
   return (
-    <>
-      <p>
-        Looking for a SaaS Boilerplate?{' '}
-        <a
-          className="text-blue-700 hover:border-b-2 hover:border-blue-700"
-          href="https://nextjs-boilerplate.com/pro-saas-starter-kit"
+    <div className="container mx-auto px-4 pb-16">
+      <section className="mb-16 text-center">
+        <h1 className="mb-4 text-5xl font-bold">
+          Improve Your Search Engine Ranking with Meteorite SEO
+        </h1>
+        <p className="mb-8 text-xl text-gray-600">
+          Boost your online visibility and drive more traffic to your website
+        </p>
+        <Link
+          href="/sign-in"
+          className="rounded-lg bg-blue-600 px-6 py-3 text-lg text-white hover:bg-blue-700"
         >
-          Next.js Boilerplate SaaS
-        </a>{' '}
-        can help you build one.
-      </p>
-      <p>
-        Follow{' '}
-        <a
-          className="text-blue-700 hover:border-b-2 hover:border-blue-700"
-          href="https://twitter.com/ixartz"
-          target="_blank"
-        >
-          @Ixartz on Twitter
-        </a>{' '}
-        for updates and more information about the boilerplate.
-      </p>
-      <p>
-        Our sponsors&apos; exceptional support has made this project possible.
-        Their services integrate seamlessly with the boilerplate, and we
-        recommend trying them out.
-      </p>
-      <h2 className="mt-5 text-2xl font-bold">Sponsors</h2>
-      <Sponsors />
-      <h2 className="mt-5 text-2xl font-bold">
-        Boilerplate Code for Your Next.js Project with Tailwind CSS
-      </h2>
-      <p className="text-base">
-        <span role="img" aria-label="rocket">
-          🚀
-        </span>{' '}
-        Next.js Boilerplate is a developer-friendly starter code for Next.js
-        projects, built with Tailwind CSS, and TypeScript.{' '}
-        <span role="img" aria-label="zap">
-          ⚡️
-        </span>{' '}
-        Made with developer experience first: Next.js, TypeScript, ESLint,
-        Prettier, Husky, Lint-Staged, Jest (replaced by Vitest), Testing
-        Library, Commitlint, VSCode, PostCSS, Tailwind CSS, Authentication with{' '}
-        <a
-          className="text-blue-700 hover:border-b-2 hover:border-blue-700"
-          href="https://clerk.com?utm_source=github&amp;utm_medium=sponsorship&amp;utm_campaign=nextjs-boilerplate"
-          target="_blank"
-        >
-          Clerk
-        </a>
-        , Database with DrizzleORM (PostgreSQL, SQLite, and MySQL), Error
-        Monitoring with{' '}
-        <a
-          className="text-blue-700 hover:border-b-2 hover:border-blue-700"
-          href="https://sentry.io/for/nextjs/?utm_source=github&amp;utm_medium=paid-community&amp;utm_campaign=general-fy25q1-nextjs&amp;utm_content=github-banner-nextjsboilerplate-logo"
-          target="_blank"
-        >
-          Sentry
-        </a>
-        , Logging with Pino.js and Log Management with{' '}
-        <a
-          className="text-blue-700 hover:border-b-2 hover:border-blue-700"
-          href="https://betterstack.com/?utm_source=github&amp;utm_medium=sponsorship&amp;utm_campaign=next-js-boilerplate"
-          target="_blank"
-        >
-          Better Stack
-        </a>
-        , Monitoring as Code with Checkly, Storybook, Multi-language (i18n), and
-        more.
-      </p>
-    </>
+          Get Started
+        </Link>
+      </section>
+
+      <section
+        id="features"
+        className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-3"
+      >
+        {[
+          {
+            title: 'Keyword Analysis',
+            description: 'Discover high-performing keywords for your niche',
+          },
+          {
+            title: 'On-Page Optimization',
+            description:
+              'Optimize your content for better search engine visibility',
+          },
+          {
+            title: 'Backlink Monitoring',
+            description: 'Track and analyze your backlink profile',
+          },
+        ].map((feature, index) => (
+          <div key={index} className="rounded-lg bg-white p-6 shadow-md">
+            <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
+            <p className="text-gray-600">{feature.description}</p>
+          </div>
+        ))}
+      </section>
+
+      <section id="pricing" className="mb-16 text-center">
+        <h2 className="mb-8 text-3xl font-bold">Simple, Transparent Pricing</h2>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {[
+            {
+              name: 'Basic',
+              price: '$29',
+              features: [
+                'Keyword Analysis',
+                'On-Page Optimization',
+                'Monthly Reports',
+              ],
+            },
+            {
+              name: 'Pro',
+              price: '$79',
+              features: [
+                'All Basic features',
+                'Backlink Monitoring',
+                'Competitor Analysis',
+              ],
+            },
+            {
+              name: 'Enterprise',
+              price: 'Custom',
+              features: [
+                'All Pro features',
+                'Dedicated Support',
+                'Custom Integrations',
+              ],
+            },
+          ].map((plan, index) => (
+            <div key={index} className="rounded-lg bg-white p-6 shadow-md">
+              <h3 className="mb-2 text-2xl font-semibold">{plan.name}</h3>
+              <p className="mb-4 text-3xl font-bold">{plan.price}</p>
+              <ul className="mb-6 text-gray-600">
+                {plan.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="mb-2">
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/signup"
+                className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+              >
+                Choose Plan
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

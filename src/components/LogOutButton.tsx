@@ -11,7 +11,7 @@ const LogOutButton = () => {
 
   return (
     <button
-      className="border-none text-gray-700 hover:text-gray-900"
+      className="rounded-lg bg-yellow-600 px-6 py-3 text-lg text-white hover:bg-yellow-700"
       type="button"
       onClick={() => signOut(() => router.push('/'))}
     >
